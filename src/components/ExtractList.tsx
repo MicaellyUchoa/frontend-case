@@ -10,11 +10,11 @@ interface ExtractListProps {
 function ExtractList({ list }: ExtractListProps) {
     return (
         <div className="mt-10 w-full">
-            <div className="justify-between px-4 xs:hidden sm:flex">
+            <div className="w-full grid grid-cols-4 gap-4 px-4 xs:hidden sm:grid">
                 <p />
                 <p className="text-c_grayscale_medium text-sm">Tipo de transação</p>
                 <p className="text-c_primary text-sm font-black">Data</p>
-                <p className="text-c_grayscale_medium text-sm">Valor</p>
+                <p className="text-c_grayscale_medium text-sm text-end">Valor</p>
             </div>
             <div className="-mt-6">
                 {list.map((extract, indexExtract) => (
