@@ -4,7 +4,6 @@ module.exports = {
     content: ['./src/**/*.{html,tsx,jsx,ts,js}'],
     theme: {
         colors: {
-            ...colors,
             transparent: 'transparent',
             c_primary: '#FE3E6D',
             c_secondary: '#1A93DA',
@@ -12,6 +11,11 @@ module.exports = {
             c_grayscale: '#3B3B3B',
             c_grayscale_light: '#F0F4F8',
             c_grayscale_medium: '#6B7076',
+            white: colors.white,
+            gray: colors.gray,
+            black: colors.black,
+            blue: colors.blue,
+            pink: colors.pink,
         },
         screens: {
             xs: '320px',
@@ -26,10 +30,5 @@ module.exports = {
                 Avenir: ['Avenir', 'sans-serif'],
             },
         },
-    },
-    plugins: [],
-    purge: {
-        enabled: true,
-        content: ['./src/**/*.{html,tsx,jsx,ts,js}'],
     },
 };
