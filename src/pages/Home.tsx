@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import ReactLoading from 'react-loading';
 
 import { IExtract } from '../interfaces/IExtract';
 import api from '../api';
@@ -7,6 +6,8 @@ import Header from '../components/Header';
 import ToastError from '../components/ToastError';
 import TabItem from '../components/TabItem';
 import Search from '../components/Search';
+import ExtractList from '../components/ExtractList';
+import Loading from '../components/Loading';
 
 function Home() {
     const [extractList, setExtractList] = useState<IExtract[]>([]);
@@ -54,32 +55,7 @@ function Home() {
                     </div>
                     <Search value={search} onChange={setSearch} />
                 </div>
-                {loading ? (
-                    <div className="w-full mt-24 flex justify-center items-center">
-                        <ReactLoading type="spin" color="#FE3E6D" />
-                    </div>
-                ) : (
-                    <div className="mt-10 w-full">
-                        {extractList.map((extract, indexExtract) => (
-                            <div key={indexExtract} className="border-blue-500 border">
-                                <div>{extract.amountTotal}</div>
-                                <div>{extract.date}</div>
-                                {extract.items.map((item, indexItem) => (
-                                    <div key={indexItem}>
-                                        <p>{item.actor}</p>
-                                        <p>{item.amount}</p>
-                                        <p>{item.dateEvent}</p>
-                                        <p>{item.entry}</p>
-                                        <p>{item.scheduled}</p>
-                                        <p>{item.source}</p>
-                                        <p>{item.status}</p>
-                                        <p>{item.type}</p>
-                                    </div>
-                                ))}
-                            </div>
-                        ))}
-                    </div>
-                )}
+                {loading ? <Loading /> : <ExtractList list={extractList} />}
             </div>
         </div>
     );

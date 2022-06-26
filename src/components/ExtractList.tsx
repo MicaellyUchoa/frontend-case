@@ -1,10 +1,22 @@
 import ExtractItem from './ExtractItem';
+import { IExtract } from '../interfaces/IExtract';
 
-function ExtractList() {
+interface ExtractListProps {
+    list: IExtract[];
+}
+
+function ExtractList({ list }: ExtractListProps) {
     return (
-        <div>
-            <ExtractItem />
-            <p>extract list here</p>
+        <div className="mt-10 w-full">
+            {list.map((extract, indexExtract) => (
+                <div key={indexExtract} className="border-blue-500 border">
+                    <div>{extract.amountTotal}</div>
+                    <div>{extract.date}</div>
+                    {extract.items.map((item, indexItem) => (
+                        <ExtractItem item={item} key={indexItem} />
+                    ))}
+                </div>
+            ))}
         </div>
     );
 }
