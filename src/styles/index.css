@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-    font-family: 'Avenir';
-    src: url('http://fonts.cdnfonts.com/css/avenir');
-}
-
 body {
     margin: 0;
     font-family: 'Avenir', sans-serif;
