@@ -3,6 +3,12 @@ import Home from '../pages/Home';
 import { Login } from '../pages/Login';
 import { useAuth } from '../data-access/auth/AuthContext';
 
+function RequireAuth(props: { children: JSX.Element }) {
+    const { signed } = useAuth();
+
+    return signed ? props.children : <Login />;
+}
+
 const RouteConfig = () => {
     return (
         <BrowserRouter>
@@ -30,9 +36,3 @@ const RouteConfig = () => {
 };
 
 export default RouteConfig;
-
-function RequireAuth(props: { children: JSX.Element }) {
-    const { signed } = useAuth();
-
-    return signed ? props.children : <Login />;
-}
