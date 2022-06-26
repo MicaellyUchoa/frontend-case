@@ -9,8 +9,7 @@ export function Login() {
     const { MakeLogin, signed } = useAuth();
 
     const handleLogin = async (values: { user: string; password: string }) => {
-        console.log(values);
-        MakeLogin({
+        await MakeLogin({
             user: values.user,
             password: values.password,
         });

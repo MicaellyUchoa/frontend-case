@@ -1,15 +1,10 @@
 import { createContext, useState, useEffect, useContext } from 'react';
-import { toast } from 'react-toastify';
 import api from '../../api';
+import ToastError from '../../components/ToastError';
+import { IAuthContextData } from '../../interfaces/IAuthContextData';
+import { IUser } from '../../interfaces/IUser';
 
-interface AuthContextData {
-    signed: boolean;
-    user: object | null;
-    MakeLogin(user: object): Promise<void>;
-    MakeLogout(): void;
-}
-
-const AuthContext = createContext<AuthContextData>({} as AuthContextData);
+const AuthContext = createContext<IAuthContextData>({} as IAuthContextData);
 
 export const AuthProvider = (props: { children: JSX.Element }) => {
     const [user, setUser] = useState<{ user: string; token: string } | null>(null);
@@ -22,28 +17,25 @@ export const AuthProvider = (props: { children: JSX.Element }) => {
         }
     }, []);
 
-    async function MakeLogin(userData: { user: string; password: string }) {
-        //TODO validate login
-        api.get(`/users`, { params: userData })
+    async function MakeLogin(userData: IUser): Promise<void> {
+        api.get(`/users`, { params: userData.user })
             .then(response => {
+                if (response?.data[0]?.password !== userData.password) {
+                    return ToastError({ title: 'Usuário e/ou senha inválidos, tente novamente mais tarde!' });
+                }
                 setUser({ user: userData.user, token: 'token' });
                 localStorage.setItem('user', userData.user);
-                localStorage.setItem('token', 'token');
+                localStorage.setItem('token', 'Bearer jwtToken');
             })
             .catch(error => {
                 if (error) {
-                    return toast.error('Usuário e/ou senha inválidos, tente novamente mais tarde!', {
-                        position: 'top-right',
-                        autoClose: 1000,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                    });
+                    return ToastError({ title: 'Algo deu errado, tente novamente mais tarde!' });
                 }
                 return;
             });
     }
 
-    function MakeLogout() {
+    function MakeLogout(): void {
         setUser(null);
         localStorage.removeItem('user');
         localStorage.removeItem('token');
