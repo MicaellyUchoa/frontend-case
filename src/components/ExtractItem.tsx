@@ -1,6 +1,7 @@
 import { memo } from 'react';
 import useStatusControl from '../hooks/useStatusControl';
 import useStatusIcon from '../hooks/useStatusIcon';
+import useValue from '../hooks/useValue';
 import { IExtractItem } from '../interfaces/IExtract';
 
 import formatDate from '../utils/formatDate';
@@ -22,8 +23,8 @@ function ExtractItem({ item }: ExtractItemProps) {
             <p className="text-c_grayscale_medium text-base">
                 {useStatusControl({ status: item.status, source: item.source, entry: item.entry })}
             </p>
-            <p>{formatDate(item.dateEvent, "dd MMM yyyy '-' HH:mm")}</p>
-            <p className="sm:text-end">{formatMoney(item.amount)}</p>
+            <p className="text-c_grayscale_medium text-base">{formatDate(item.dateEvent, "dd MMM yyyy '-' HH:mm")}</p>
+            <p className="sm:text-end">{useValue({ value: item.amount, status: item.status, entry: item.entry })}</p>
         </div>
     );
 }
