@@ -1,10 +1,6 @@
 import { memo } from 'react';
 import { IExtractItem } from '../interfaces/IExtract';
 
-//date
-import format from 'date-fns/format';
-import ptBR from 'date-fns/locale/pt-BR';
-import { formatISO } from 'date-fns';
 import formatDate from '../utils/formatDate';
 
 interface ExtractItemProps {
