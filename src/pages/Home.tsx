@@ -8,13 +8,21 @@ import TabItem from '../components/TabItem';
 import Search from '../components/Search';
 import ExtractList from '../components/ExtractList';
 import Loading from '../components/Loading';
+import Tab from '../components/Tab';
+import { ITab } from '../interfaces/ITab';
 
 function Home() {
+    const RenderRef = useRef(true);
+
     const [extractList, setExtractList] = useState<IExtract[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [search, setSearch] = useState<string>();
-    const [status, setStatus] = useState<string>('');
-    const RenderRef = useRef(true);
+    const [statusItems, setStatusItems] = useState<ITab[]>([
+        { description: 'Tudo', selected: false },
+        { description: 'Entrada', selected: false },
+        { description: 'Saída', selected: false },
+        { description: 'Futuro', selected: false },
+    ]);
 
     useEffect(() => {
         setLoading(true);
@@ -43,20 +51,12 @@ function Home() {
     }, [search]);
 
     return (
-        <div className="w-full flex flex-col justify-center items-center">
-            <Header title="Extrato" />
-            <div className="w-full flex-wrap px-8 md:px-36 py-5 ">
-                <div className="flex xs:flex-wrap-reverse lg:flex-nowrap items-center">
-                    <div className="flex xs:gap-1 md:gap-8 my-4 lg:mr-10">
-                        <TabItem description="Tudo" selected></TabItem>
-                        <TabItem description="Entrada"></TabItem>
-                        <TabItem description="Saída"></TabItem>
-                        <TabItem description="Futuro"></TabItem>
-                    </div>
-                    <Search value={search} onChange={setSearch} />
-                </div>
-                {loading ? <Loading /> : <ExtractList list={extractList} />}
+        <div className="w-full flex-wrap px-8 md:px-36 py-5 ">
+            <div className="flex xs:flex-wrap-reverse lg:flex-nowrap items-center">
+                <Tab items={statusItems} onChangeItems={setStatusItems} />
+                <Search value={search} onChange={setSearch} />
             </div>
+            {loading ? <Loading /> : <ExtractList list={extractList} />}
         </div>
     );
 }

@@ -2,6 +2,7 @@ import { Route, BrowserRouter, Routes } from 'react-router-dom';
 import Home from '../pages/Home';
 import { Login } from '../pages/Login';
 import { useAuth } from '../data-access/auth/AuthContext';
+import ContainerPage from '../components/ContainerPage';
 
 function RequireAuth(props: { children: JSX.Element }) {
     const { signed } = useAuth();
@@ -18,7 +19,9 @@ const RouteConfig = () => {
                     path="/home"
                     element={
                         <RequireAuth>
-                            <Home />
+                            <ContainerPage title="Extrato">
+                                <Home />
+                            </ContainerPage>
                         </RequireAuth>
                     }
                 />
@@ -26,7 +29,9 @@ const RouteConfig = () => {
                     path="*"
                     element={
                         <RequireAuth>
-                            <Home />
+                            <ContainerPage title="Extrato">
+                                <Home />
+                            </ContainerPage>
                         </RequireAuth>
                     }
                 />
