@@ -1,4 +1,11 @@
 {
+    "users": [
+        {
+            "user": "usuario@usuario.com",
+            "password": "usuario",
+            "id": "1"
+        }
+    ],
     "results": [
         {
             "date": "2021-01-06",

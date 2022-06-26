@@ -1,4 +1,6 @@
 import { createContext, useState, useEffect, useContext } from 'react';
+import { toast } from 'react-toastify';
+import api from '../../api';
 
 interface AuthContextData {
     signed: boolean;
@@ -21,9 +23,24 @@ export const AuthProvider = (props: { children: JSX.Element }) => {
     }, []);
 
     async function MakeLogin(userData: { user: string; password: string }) {
-        setUser({ user: userData.user, token: 'token' });
-        localStorage.setItem('user', userData.user);
-        localStorage.setItem('token', 'token');
+        //TODO validate login
+        api.get(`/users`, { params: userData })
+            .then(response => {
+                setUser({ user: userData.user, token: 'token' });
+                localStorage.setItem('user', userData.user);
+                localStorage.setItem('token', 'token');
+            })
+            .catch(error => {
+                if (error) {
+                    return toast.error('Usuário e/ou senha inválidos, tente novamente mais tarde!', {
+                        position: 'top-right',
+                        autoClose: 1000,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                    });
+                }
+                return;
+            });
     }
 
     function MakeLogout() {
