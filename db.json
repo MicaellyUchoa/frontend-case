@@ -13,6 +13,16 @@
             "items": [
                 {
                     "status": "COMPLETED",
+                    "actor": "Micaelly Uchoa",
+                    "amount": 13920,
+                    "source": "PAYMENT",
+                    "type": "BANKSLIP",
+                    "entry": "CREDIT",
+                    "scheduled": false,
+                    "dateEvent": "2022-06-26T21:00:00Z"
+                },
+                {
+                    "status": "COMPLETED",
                     "actor": "José Marques",
                     "amount": 13920,
                     "source": "PAYMENT",
