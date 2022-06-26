@@ -30,8 +30,8 @@ function useValue({ status, entry, value }: useStatusIconProps): JSX.Element {
     }, []);
 
     return (
-        <p className={`${color} ${isThrough && 'line-through'}`}>
-            {isPositive !== undefined && isPositive ? '+' : '-'}
+        <p className={`${color} ${isThrough && 'line-through'} sm:text-end`}>
+            {isPositive !== undefined && isPositive ? ' + ' : ' - '}
             <span className={`${status !== StatusEnum.REFUNDED && 'font-black'}`}>{formatMoney(value)}</span>
         </p>
     );
