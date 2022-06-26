@@ -10,8 +10,8 @@ function TabItem({ selected, description, onClick }: TabProps) {
     return (
         <button
             onClick={onClick}
-            className={`rounded-full px-4 py-1 cursor-pointer 
-            ${selected ? 'bg-c_primary hover:bg-pink-600 text-white' : 'hover:bg-c_secondary_light text-c_primary'}`}
+            className={`rounded-full px-4 py-1 cursor-pointer hover:transition-colors
+            ${selected ? 'bg-c_primary hover:bg-pink-700 text-white' : 'hover:bg-c_secondary_light text-c_primary'}`}
         >
             {description}
         </button>
