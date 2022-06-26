@@ -1,6 +1,7 @@
 import ExtractItem from './ExtractItem';
 import { IExtract } from '../interfaces/IExtract';
 import formatDate from '../utils/formatDate';
+import formatMoney from '../utils/formatMoney';
 
 interface ExtractListProps {
     list: IExtract[];
@@ -30,7 +31,7 @@ function ExtractList({ list }: ExtractListProps) {
                         <div className="border-c_grayscale_100  border-l h-5 mx-7"></div>
                         <div className="flex justify-end">
                             <p className=" absolute text-c_grayscale text-xs mt-2 px-4">
-                                saldo do dia <span className="font-bold"> {extract.amountTotal}</span>
+                                saldo do dia <span className="font-bold"> {formatMoney(extract.amountTotal)}</span>
                             </p>
                         </div>
                     </div>
