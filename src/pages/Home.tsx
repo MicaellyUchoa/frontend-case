@@ -1,34 +1,37 @@
-import { useEffect, useState } from 'react';
-import { toast } from 'react-toastify';
+import { useEffect, useRef, useState } from 'react';
 import { IExtract } from '../interfaces/IExtract';
 import api from '../api';
 import Header from '../components/Header';
+import ToastError from '../components/ToastError';
 
 function Home() {
     const [extractList, setExtractList] = useState<IExtract[]>([]);
-    const [mounted, setMounted] = useState<boolean>(false);
+    const [loading, setLoading] = useState<boolean>(true);
+    const firstRenderRef = useRef(true);
 
     useEffect(() => {
-        (async () => {
-            if (!mounted) {
-                api.get(`/results`)
+        if (firstRenderRef.current) {
+            firstRenderRef.current = false;
+            if (loading) {
+                const controller = new AbortController();
+
+                api.get(`/results`, { signal: controller.signal })
                     .then(response => {
                         setExtractList(response.data);
+                        setLoading(prevProp => !prevProp);
                     })
                     .catch(error => {
+                        setLoading(prevProp => !prevProp);
                         if (error) {
-                            return toast.error('A solicitação não obteve sucesso, tente novamente mais tarde!', {
-                                position: 'top-right',
-                                autoClose: 1000,
-                                closeOnClick: true,
-                                pauseOnHover: true,
-                            });
+                            ToastError({ title: 'A solicitação não obteve sucesso, tente novamente mais tarde!' });
                         }
-                        return;
+                    })
+                    .finally(() => {
+                        controller.abort();
                     });
-                return () => setMounted(prev => !prev);
             }
-        })();
+            return;
+        }
     }, []);
 
     return (
@@ -36,12 +39,12 @@ function Home() {
             <Header title="Extrato" />
 
             <div className="mt-10 w-full">
-                {extractList.map(extract => (
-                    <div className="border-blue-500 border">
+                {extractList.map((extract, indexExtract) => (
+                    <div key={indexExtract} className="border-blue-500 border">
                         <div>{extract.amountTotal}</div>
                         <div>{extract.date}</div>
-                        {extract.items.map(item => (
-                            <div>
+                        {extract.items.map((item, indexItem) => (
+                            <div key={indexItem}>
                                 <p>{item.actor}</p>
                                 <p>{item.amount}</p>
                                 <p>{item.dateEvent}</p>
