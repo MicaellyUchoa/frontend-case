@@ -8,11 +8,11 @@ function Header(props: { title: string }) {
         MakeLogout();
     }
     return (
-        <header className="flex justify-between w-full items-center px-36 py-3">
-            <p className="text-xl font-bold">{props.title}</p>
+        <header className="flex justify-between w-full items-center px-8 md:px-36 py-5 border-b-2 border-gray-100">
+            <p className="text-xl font-black">{props.title}</p>
 
             <button className="flex gap-2 outline-none" onClick={handleLogout}>
-                <p className="text-sm font-bold">sair</p>
+                <p className="text-sm font-medium">sair</p>
                 <TbLogout className="cursor-pointer" size={20} />
             </button>
         </header>

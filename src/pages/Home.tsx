@@ -35,24 +35,26 @@ function Home() {
         <div className="w-full flex flex-col justify-center items-center">
             <Header title="Extrato" />
 
-            {extractList.map(extract => (
-                <div className="w-full border-blue-500 border">
-                    <div>{extract.amountTotal}</div>
-                    <div>{extract.date}</div>
-                    {extract.items.map(item => (
-                        <div>
-                            <p>{item.actor}</p>
-                            <p>{item.amount}</p>
-                            <p>{item.dateEvent}</p>
-                            <p>{item.entry}</p>
-                            <p>{item.scheduled}</p>
-                            <p>{item.source}</p>
-                            <p>{item.status}</p>
-                            <p>{item.type}</p>
-                        </div>
-                    ))}
-                </div>
-            ))}
+            <div className="mt-10 w-full">
+                {extractList.map(extract => (
+                    <div className="border-blue-500 border">
+                        <div>{extract.amountTotal}</div>
+                        <div>{extract.date}</div>
+                        {extract.items.map(item => (
+                            <div>
+                                <p>{item.actor}</p>
+                                <p>{item.amount}</p>
+                                <p>{item.dateEvent}</p>
+                                <p>{item.entry}</p>
+                                <p>{item.scheduled}</p>
+                                <p>{item.source}</p>
+                                <p>{item.status}</p>
+                                <p>{item.type}</p>
+                            </div>
+                        ))}
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }
