@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import api from '../api';
 import { useAuth } from '../data-access/auth/AuthContext';
+import { toast } from 'react-toastify';
 import { IExtract } from '../interfaces/IExtract';
-import '../styles/App.css';
+import api from '../api';
 
 function Home() {
     const { MakeLogout } = useAuth();
@@ -12,11 +12,29 @@ function Home() {
     }
 
     const [extractList, setExtractList] = useState<IExtract[]>([]);
+    const [mounted, setMounted] = useState<boolean>(false);
 
     useEffect(() => {
-        api.get(`/results`).then(response => {
-            setExtractList(response.data);
-        });
+        (async () => {
+            if (!mounted) {
+                api.get(`/results`)
+                    .then(response => {
+                        setExtractList(response.data);
+                    })
+                    .catch(error => {
+                        if (error) {
+                            return toast.error('A solicitação não obteve sucesso, tente novamente mais tarde!', {
+                                position: 'top-right',
+                                autoClose: 1000,
+                                closeOnClick: true,
+                                pauseOnHover: true,
+                            });
+                        }
+                        return;
+                    });
+                return () => setMounted(prev => !prev);
+            }
+        })();
     }, []);
 
     return (
