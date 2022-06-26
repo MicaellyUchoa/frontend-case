@@ -1,17 +1,20 @@
+import { ButtonHTMLAttributes, memo } from 'react';
+
 interface TabProps {
     selected?: boolean;
     description: string;
+    onClick: React.MouseEventHandler<HTMLButtonElement> | undefined;
 }
 
-function TabItem({ selected = false, description }: TabProps) {
+function TabItem({ selected, description, onClick }: TabProps) {
     return (
-        <div
-            className={`rounded-full px-4 py-1 cursor-pointer ${
-                selected ? 'bg-c_primary hover:bg-pink-600 text-white' : 'hover:bg-c_secondary_light text-c_primary'
-            }`}
+        <button
+            onClick={onClick}
+            className={`rounded-full px-4 py-1 cursor-pointer 
+            ${selected ? 'bg-c_primary hover:bg-pink-600 text-white' : 'hover:bg-c_secondary_light text-c_primary'}`}
         >
             {description}
-        </div>
+        </button>
     );
 }
-export default TabItem;
+export default memo(TabItem);
