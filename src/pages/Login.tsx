@@ -21,9 +21,7 @@ export function Login() {
             </div>
 
             <div className="justify-start w-80">
-                <div className="mb-4"
-                
-                >
+                <div className="mb-4">
                     <label className="text-gray-500">usuário</label>
                     <input className="w-full h-10 border-gray-100 rounded-md focus:outline-none p-2" />
                 </div>
