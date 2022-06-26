@@ -10,6 +10,7 @@ module.exports = {
             c_secondary_light: '#EAF7FF',
             c_grayscale: '#3B3B3B',
             c_grayscale_light: '#F0F4F8',
+            c_grayscale_100: '#C7CBCF',
             c_grayscale_medium: '#6B7076',
             white: colors.white,
             gray: colors.gray,
