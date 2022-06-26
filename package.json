@@ -11,11 +11,8 @@
     },
     "husky": {
         "hooks": {
-            "pre-commit": "lint-staged"
+            "pre-commit": "yarn prettier-format && yarn lint"
         }
-    },
-    "lint-staged": {
-        "*": "yarn prettier-format && yarn lint"
     },
     "dependencies": {
         "husky": "^8.0.1",
