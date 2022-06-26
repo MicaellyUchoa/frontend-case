@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import useStatusControl from '../hooks/useStatusControl';
 import { IExtractItem } from '../interfaces/IExtract';
 
 import formatDate from '../utils/formatDate';
@@ -15,7 +16,9 @@ function ExtractItem({ item }: ExtractItemProps) {
                 <p>ícone</p>
                 <p className="text-c_grayscale text-base">{item.actor}</p>
             </div>
-            <p>tipo transação</p>
+            <p className="text-c_grayscale_medium text-base">
+                {useStatusControl({ status: item.status, source: item.source, entry: item.entry })}
+            </p>
             <p>{formatDate(item.dateEvent, 'dd MMM yyyy HH:mm')}</p>
             <p className="sm:text-end">{formatMoney(item.amount)}</p>
         </div>
