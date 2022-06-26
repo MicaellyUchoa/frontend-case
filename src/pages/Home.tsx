@@ -1,16 +1,10 @@
 import { useEffect, useState } from 'react';
-import { useAuth } from '../data-access/auth/AuthContext';
 import { toast } from 'react-toastify';
 import { IExtract } from '../interfaces/IExtract';
 import api from '../api';
+import Header from '../components/Header';
 
 function Home() {
-    const { MakeLogout } = useAuth();
-
-    async function handleLogout() {
-        MakeLogout();
-    }
-
     const [extractList, setExtractList] = useState<IExtract[]>([]);
     const [mounted, setMounted] = useState<boolean>(false);
 
@@ -39,12 +33,8 @@ function Home() {
 
     return (
         <div className="w-full flex flex-col justify-center items-center">
-            <button
-                className="bg-gray-100 p-3 rounded-md hover:bg-gray-400 transition-colors mt-10"
-                onClick={handleLogout}
-            >
-                Logout
-            </button>
+            <Header title="Extrato" />
+
             {extractList.map(extract => (
                 <div className="w-full border-blue-500 border">
                     <div>{extract.amountTotal}</div>
