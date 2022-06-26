@@ -1,5 +1,8 @@
 import axios from 'axios';
 
 export default axios.create({
-    baseURL: process.env.REACT_APP_BASE_URL,
+    baseURL:
+        import.meta.env.MODE === 'development'
+            ? 'http://localhost:4000'
+            : 'https://my-json-server.typicode.com/MicaellyUchoa/frontend-case',
 });
