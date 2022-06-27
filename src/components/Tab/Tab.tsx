@@ -1,20 +1,17 @@
 import { memo } from 'react';
-import { FilterEnum } from '../enums/FilterEnum';
-import { ITab } from '../interfaces/ITab';
-import TabItem from './TabItem';
+import { FilterEnum } from '../../enums/FilterEnum';
 
-interface TabProps {
-    items: ITab[];
-    onChangeItems: React.Dispatch<React.SetStateAction<ITab[]>>;
-}
+import { ITab } from '../../interfaces/ITab';
+import { ITabProps } from '../../interfaces/ITabProps';
 
-function Tab({ items, onChangeItems }: TabProps) {
+import TabItem from '../TabItem/TabItem';
+
+function Tab({ items, onChangeItems }: ITabProps) {
     const getIndexSelectedByEnum = (items: ITab[], descriptionSearch: string) => {
         return items.findIndex(item => {
             return item.description === descriptionSearch && item.selected;
         });
     };
-
     const handleChangeStatus = async (tabItem: ITab, index: number) => {
         let newItems = [...items];
 

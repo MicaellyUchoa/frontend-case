@@ -1,14 +1,10 @@
 import { memo } from 'react';
+import { ITabItemProps } from '../../interfaces/ITabItemProps';
 
-interface TabProps {
-    selected?: boolean;
-    description: string;
-    onClick: React.MouseEventHandler<HTMLButtonElement> | undefined;
-}
-
-function TabItem({ selected, description, onClick }: TabProps) {
+function TabItem({ selected, description, onClick }: ITabItemProps) {
     return (
         <button
+            role="button"
             onClick={onClick}
             className={`rounded-full px-4 py-1 cursor-pointer hover:transition-colors
             ${selected ? 'bg-c_primary hover:bg-pink-700 text-white' : 'hover:bg-c_secondary_light text-c_primary'}`}
