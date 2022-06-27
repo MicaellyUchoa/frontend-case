@@ -12,9 +12,7 @@ function Search({ value, onChange }: SearchProps) {
     const debouncedSearchTerm = useDebounce(searchDebounce, 500);
 
     useEffect(() => {
-        if (debouncedSearchTerm) {
-            onChange(debouncedSearchTerm);
-        }
+        onChange(debouncedSearchTerm);
     }, [debouncedSearchTerm]);
 
     return (
