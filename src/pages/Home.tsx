@@ -59,7 +59,7 @@ function Home() {
     }, [statusItems]);
 
     return (
-        <div className="w-full flex-wrap px-8 md:px-36 py-5 ">
+        <>
             <div className="flex xs:flex-wrap-reverse lg:flex-nowrap items-center">
                 <Tab items={statusItems} onChangeItems={setStatusItems} />
                 <Search value={search} onChange={setSearch} />
@@ -69,7 +69,7 @@ function Home() {
             ) : (
                 <ExtractList list={filteredExtractList.length > 0 ? filteredExtractList : extractList} />
             )}
-        </div>
+        </>
     );
 }
 

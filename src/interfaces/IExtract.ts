@@ -9,12 +9,12 @@ export interface IExtract {
 }
 
 export interface IExtractItem {
-    status: StatusEnum; //enum
+    status: StatusEnum;
     actor: string;
     amount: number;
-    source: SourceEnum; //enum
-    type: string; //enum
-    entry: EntryEnum; //enum
+    source: SourceEnum;
+    type: string;
+    entry: EntryEnum;
     scheduled: boolean;
     dateEvent: string;
 }

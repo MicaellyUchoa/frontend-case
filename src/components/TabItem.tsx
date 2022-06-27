@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, memo } from 'react';
+import { memo } from 'react';
 
 interface TabProps {
     selected?: boolean;

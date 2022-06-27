@@ -3,7 +3,7 @@ import { AiOutlineSearch } from 'react-icons/ai';
 
 interface SearchProps {
     value: string | undefined;
-    onChange: Function;
+    onChange: React.Dispatch<React.SetStateAction<string | undefined>>;
 }
 
 function Search({ value, onChange }: SearchProps) {
