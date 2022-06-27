@@ -1,6 +1,6 @@
 import { fireEvent, render, RenderResult, within } from '@testing-library/react';
 
-import Tab from './Tab';
+import Tab from '.';
 import { FilterEnum } from '../../enums/FilterEnum';
 import { ITabProps } from '../../interfaces/ITabProps';
 

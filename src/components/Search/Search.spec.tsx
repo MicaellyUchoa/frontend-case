@@ -1,6 +1,6 @@
 import { render, fireEvent, createEvent } from '@testing-library/react';
 
-import Search from './Search';
+import Search from '.';
 
 let props: any;
 beforeEach(() => {

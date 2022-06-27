@@ -4,7 +4,7 @@ import { FilterEnum } from '../../enums/FilterEnum';
 import { ITab } from '../../interfaces/ITab';
 import { ITabProps } from '../../interfaces/ITabProps';
 
-import TabItem from '../TabItem/TabItem';
+import TabItem from '../TabItem';
 
 function Tab({ items, onChangeItems }: ITabProps) {
     const getIndexSelectedByEnum = (items: ITab[], descriptionSearch: string) => {

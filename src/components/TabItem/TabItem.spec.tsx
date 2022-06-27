@@ -1,6 +1,6 @@
 import { render, RenderResult } from '@testing-library/react';
 
-import TabItem from './TabItem';
+import TabItem from '.';
 import { ITabItemProps } from '../../interfaces/ITabItemProps';
 import { FilterEnum } from '../../enums/FilterEnum';
 
