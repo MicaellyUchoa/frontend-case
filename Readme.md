@@ -2,73 +2,80 @@
 
 Desenvolvimento de um case para CoraBank.
 
-## 🔧 Instalação 
+## 🔧 Instalação
 
 ```bash
 $ yarn install
 ```
+
 #### Para rodar o JSON-SERVER
+
 ```bash
 $ yarn api
 ```
 
 #### Para rodar o projeto em desenvolvimento
+
 ```bash
 $ yarn dev
 ```
 
 #### Para gerar o build do projeto
+
 ```bash
 $ yarn build
 ```
 
-
 #### Para rodar o lint
+
 ```bash
 $ yarn lint
 ```
+
 #### Para rodar o prettier
+
 ```bash
 $ yarn format
 ```
 
 #### 💻 Tecnologias utilizadas
-- Typescript
-- React 
-- Vite
-- TailwindCSS
-- JSON-SERVER
 
-📶 *Para formatação:*
-- ESLint
-- Prettier
-- Husky
+-   Typescript
+-   React
+-   Vite
+-   TailwindCSS
+-   JSON-SERVER
 
-🌎 *Bibliotecas externas:*
+📶 _Para formatação:_
 
-- react-icons
-- react-loading
-- react-router-dom
-- react-toastify
-- yup
-- formik
-- axios
-- date-fns
+-   ESLint
+-   Prettier
+-   Husky
 
-🚀 *Features*
+🌎 _Bibliotecas externas:_
 
-- Responsividade
-- Feedbacks ao usuário
-- Login com guarda de rota (utilizando context API)
-- Consumo de API de listagem de extrato
-- Layout Listagem
-- Busca simples
-- Filtro rápido
-- Máscara de valor
-- Máscara de data
-- Loading
-- Reload
-- Exibição de mensagem quando nada for encontrado na listagem  
+-   react-icons
+-   react-loading
+-   react-router-dom
+-   react-toastify
+-   yup
+-   formik
+-   axios
+-   date-fns
 
+🚀 _Features_
 
-[✨ Clique aqui para ver como ficou ✨](https://frontend-case-seven.vercel.app/) 
+-   Responsividade
+-   Feedbacks ao usuário
+-   Login com guarda de rota (utilizando context API)
+-   Consumo de API de listagem de extrato
+-   Layout Listagem
+-   Busca simples
+-   Filtro rápido
+-   Máscara de valor
+-   Máscara de data
+-   Loading
+-   Reload
+-   Exibição de mensagem quando nada for encontrado na listagem
+
+[✨ Clique aqui para ver como ficou ✨](https://frontend-case-seven.vercel.app/)
