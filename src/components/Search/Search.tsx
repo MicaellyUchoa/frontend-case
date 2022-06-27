@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
-import useDebounce from '../hooks/useDebounce';
+import useDebounce from '../../hooks/useDebounce';
 
 interface SearchProps {
     value: string | undefined;
@@ -9,16 +9,17 @@ interface SearchProps {
 
 function Search({ value = '', onChange }: SearchProps) {
     const [searchDebounce, setSearchDebounce] = useState<string | undefined>(value);
-    const debouncedSearchTerm = useDebounce(searchDebounce, 500);
+    const debouncedSearch = useDebounce(searchDebounce, 500);
 
     useEffect(() => {
-        onChange(debouncedSearchTerm);
-    }, [debouncedSearchTerm]);
+        onChange(debouncedSearch);
+    }, [debouncedSearch]);
 
     return (
         <div className="w-full flex items-center bg-c_grayscale_light p-5 gap-4 outline-none rounded-2xl">
             <AiOutlineSearch className="text-c_grayscale" size={20} />
             <input
+                aria-label="inputSearch"
                 placeholder="Pesquisar"
                 value={searchDebounce}
                 onChange={event => setSearchDebounce(event.target.value)}
