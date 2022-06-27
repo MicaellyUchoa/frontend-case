@@ -14,7 +14,7 @@ interface ExtractItemProps {
 
 function ExtractItem({ item }: ExtractItemProps) {
     return (
-        <div className="w-full grid grid-cols-4 gap-4 xs:flex xs:flex-col items-center sm:grid text-base">
+        <div className="w-full grid grid-cols-4 gap-4 xs:flex xs:flex-col sm:items-center sm:grid text-base">
             <div className="flex gap-4 items-center">
                 <div className="w-8 h-8 bg-c_secondary_light rounded-full flex justify-center items-center">
                     <img className="h-4 w-4" src={useStatusIcon({ status: item.status })} alt={item.status} />

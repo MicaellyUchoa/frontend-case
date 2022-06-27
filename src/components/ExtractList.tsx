@@ -23,9 +23,16 @@ function ExtractList({ list }: ExtractListProps) {
                             {formatDate(extract.date, "dd  'de' MMMM")}
                         </p>
                         <div className="border-c_grayscale_100  border-l h-5 mx-7"></div>
-                        <div className="border-c_grayscale_100 border rounded-2xl px-4 py-7 flex flex-col items-center gap-7">
+                        <div className="border-c_grayscale_100 border rounded-2xl px-4 py-7 flex flex-col gap-7">
                             {extract.items.map((item, indexItem) => (
-                                <ExtractItem item={item} key={indexItem} />
+                                <div
+                                    className={`${
+                                        extract.items.length - 1 !== indexItem &&
+                                        'xs:border-b-2 sm:border-none xs:border-c_grayscale_light xs:pb-4 sm:pb-0'
+                                    }`}
+                                >
+                                    <ExtractItem item={item} key={indexItem} />
+                                </div>
                             ))}
                         </div>
                         <div className="border-c_grayscale_100  border-l h-5 mx-7"></div>

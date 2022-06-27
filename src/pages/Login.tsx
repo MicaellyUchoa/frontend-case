@@ -17,7 +17,7 @@ export function Login() {
     };
 
     return (
-        <div className="w-full h-screen bg-gray-300 flex flex-col justify-center items-center">
+        <div className="w-full h-screen bg-c_grayscale_100 flex flex-col justify-center items-center">
             <div className="mb-10 flex justify-center items-center">
                 <img className="h-24 w-24 rounded-lg" src={LogoCora} alt="Logotipo Cora" />
             </div>
@@ -65,7 +65,7 @@ export function Login() {
 
                             <button
                                 type="submit"
-                                className="bg-gray-200 hover:bg-pink-600 focus:bg-pink-600 focus:text-gray-200 hover:text-gray-200 transition-colors w-full rounded-lg h-10 focus:outline-none "
+                                className="bg-c_primary hover:bg-pink-700 focus:bg-c_primary text-gray-200 hover:text-gray-200 transition-colors w-full rounded-lg h-10 focus:outline-none "
                             >
                                 Entrar
                             </button>
