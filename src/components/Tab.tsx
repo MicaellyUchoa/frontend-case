@@ -9,19 +9,27 @@ interface TabProps {
 }
 
 function Tab({ items, onChangeItems }: TabProps) {
-    const handleChangeStatus = (tabItem: ITab, index: number) => {
+    const getIndexSelectedByEnum = (items: ITab[], descriptionSearch: string) => {
+        return items.findIndex(item => {
+            return item.description === descriptionSearch && item.selected;
+        });
+    };
+
+    const handleChangeStatus = async (tabItem: ITab, index: number) => {
         let newItems = [...items];
+
+        if (getIndexSelectedByEnum(newItems, FilterEnum.ALL) !== undefined) {
+            newItems[getIndexSelectedByEnum(newItems, FilterEnum.ALL)] = {
+                description: FilterEnum.ALL,
+                selected: false,
+            };
+        }
+
         if (tabItem.description === FilterEnum.ALL && !tabItem.selected) {
             newItems = newItems.map(item => {
                 let provisionalItem = { ...item, selected: false };
                 return provisionalItem;
             });
-        } else {
-            const getIndex = newItems.findIndex(item => {
-                return item.description === FilterEnum.ALL && item.selected;
-            });
-
-            newItems[getIndex] = { description: FilterEnum.ALL, selected: false };
         }
 
         newItems[index] = { description: tabItem.description, selected: !tabItem.selected };
