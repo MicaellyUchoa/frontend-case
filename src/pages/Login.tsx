@@ -45,7 +45,7 @@ export function Login() {
                                     value={values.user}
                                 />
                                 {errors.user && touched.user && (
-                                    <p className="text-red-600 text-xs mt-1">{errors.user}</p>
+                                    <p className="text-red-900 text-xs mt-1">{errors.user}</p>
                                 )}
                             </div>
                             <div className="mb-4">
@@ -59,7 +59,7 @@ export function Login() {
                                     value={values.password}
                                 />
                                 {errors.password && touched.password && (
-                                    <p className="text-red-600 text-xs mt-1">{errors.password}</p>
+                                    <p className="text-red-900 text-xs mt-1">{errors.password}</p>
                                 )}
                             </div>
 
