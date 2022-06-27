@@ -9,7 +9,7 @@
         "api": "json-server --watch db.json --port 4000",
         "lint": "prettier --check .",
         "format": "prettier --write .",
-        "test": "jest --watchAll",
+        "test": "jest --watchAll --collectCoverage",
         "prepare": "husky install"
     },
     "husky": {
