@@ -24,7 +24,7 @@ function Home() {
     const [reload, setReload] = useState<boolean>(false);
     const [search, setSearch] = useState<string>();
     const [statusItems, setStatusItems] = useState<ITab[]>([
-        { description: FilterEnum.ALL, selected: false },
+        { description: FilterEnum.ALL, selected: true },
         { description: FilterEnum.ENTRY, selected: false },
         { description: FilterEnum.EXIT, selected: false },
         { description: FilterEnum.FUTURE, selected: false },
@@ -32,32 +32,33 @@ function Home() {
 
     useEffect(() => {
         setFilteredExtractList([]);
-        if (RenderRef.current || search !== undefined || reload) {
+        if (RenderRef.current || reload) {
             RenderRef.current = false;
             setReload(false);
             setLoading(true);
 
             const controller = new AbortController();
 
-            api.get(`/results`, { signal: controller.signal, params: { q: search } })
+            api.get(`/results`, { signal: controller.signal })
                 .then(response => {
                     setExtractList(response.data);
-                    setLoading(prevProp => !prevProp);
                 })
                 .catch(error => {
-                    setLoading(prevProp => !prevProp);
                     if (error) {
                         ToastError({ title: 'A solicitação não obteve sucesso, tente novamente mais tarde!' });
                     }
                 })
                 .finally(() => {
-                    setLoading(false);
+                    setLoading(prevProp => !prevProp);
                     controller.abort();
                 });
-
             return;
         }
-    }, [search, reload]);
+    }, [reload]);
+
+    useEffect(() => {
+        useExtractFiltered({ search, extractList, setFilteredExtractList });
+    }, [search]);
 
     useEffect(() => {
         useExtractFiltered({ statusItems, extractList, setFilteredExtractList });

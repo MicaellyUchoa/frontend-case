@@ -7,7 +7,7 @@ interface SearchProps {
     onChange: React.Dispatch<React.SetStateAction<string | undefined>>;
 }
 
-function Search({ value, onChange }: SearchProps) {
+function Search({ value = '', onChange }: SearchProps) {
     const [searchDebounce, setSearchDebounce] = useState<string | undefined>(value);
     const debouncedSearchTerm = useDebounce(searchDebounce, 500);
 
