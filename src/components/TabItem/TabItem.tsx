@@ -4,6 +4,7 @@ import { ITabItemProps } from '../../interfaces/ITabItemProps';
 function TabItem({ selected, description, onClick }: ITabItemProps) {
     return (
         <button
+            data-testid="tab-item"
             role="button"
             onClick={onClick}
             className={`rounded-full px-4 py-1 cursor-pointer hover:transition-colors

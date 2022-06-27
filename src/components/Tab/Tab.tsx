@@ -35,7 +35,7 @@ function Tab({ items, onChangeItems }: ITabProps) {
     };
 
     return (
-        <div className="flex xs:gap-1 md:gap-8 my-4 lg:mr-10">
+        <div className="flex xs:gap-1 md:gap-8 my-4 lg:mr-10" data-testid="tab">
             {items.map((item, index) => (
                 <TabItem
                     key={item.description}
