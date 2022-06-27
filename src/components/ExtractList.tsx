@@ -1,13 +1,9 @@
 import ExtractItem from './ExtractItem';
-import { IExtract } from '../interfaces/IExtract';
 import formatDate from '../utils/formatDate';
 import formatMoney from '../utils/formatMoney';
+import { IExtractListProps } from '../interfaces/IExtractListProps';
 
-interface ExtractListProps {
-    list: IExtract[];
-}
-
-function ExtractList({ list }: ExtractListProps) {
+function ExtractList({ list }: IExtractListProps) {
     return (
         <div className="mt-10 w-full">
             <div className="w-full grid grid-cols-4 gap-4 px-4 xs:hidden sm:grid">

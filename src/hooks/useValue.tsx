@@ -1,14 +1,9 @@
 import { EntryEnum } from '../enums/EntryEnum';
 import { StatusEnum } from '../enums/StatusEnum';
 import formatMoney from '../utils/formatMoney';
-import { useState, useEffect } from 'react';
+import { IUseValueProps } from '../interfaces/IUseValueProps';
 
-interface useStatusIconProps {
-    status: StatusEnum;
-    entry: EntryEnum;
-    value: number;
-}
-function useValue({ status, entry, value }: useStatusIconProps): JSX.Element {
+function useValue({ status, entry, value }: IUseValueProps): JSX.Element {
     const handleStyleValue = (): string => {
         if (status === StatusEnum.REFUNDED) return 'text-c_grayscale line-through';
         switch (entry) {

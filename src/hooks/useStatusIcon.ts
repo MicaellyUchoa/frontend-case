@@ -4,11 +4,9 @@ import { StatusEnum } from '../enums/StatusEnum';
 import Received from '../assets/icons/received.svg';
 import Refunded from '../assets/icons/refunded.svg';
 import Schedule from '../assets/icons/schedule.svg';
+import { IUseStatusIconProps } from '../interfaces/IUseStatusIconProps';
 
-interface useStatusIconProps {
-    status: StatusEnum;
-}
-function useStatusIcon({ status }: useStatusIconProps): string {
+function useStatusIcon({ status }: IUseStatusIconProps): string {
     switch (status) {
         case StatusEnum.COMPLETED: {
             return Received;

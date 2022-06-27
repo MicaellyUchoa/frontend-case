@@ -1,18 +1,14 @@
 import { memo } from 'react';
-import { IExtractItem } from '../interfaces/IExtract';
 
 //hooks
 import useStatusControl from '../hooks/useStatusControl';
 import useStatusIcon from '../hooks/useStatusIcon';
 import useValue from '../hooks/useValue';
+import { IExtractItemProps } from '../interfaces/IExtractItemProps';
 
 import formatDate from '../utils/formatDate';
 
-interface ExtractItemProps {
-    item: IExtractItem;
-}
-
-function ExtractItem({ item }: ExtractItemProps) {
+function ExtractItem({ item }: IExtractItemProps) {
     return (
         <div className="w-full grid grid-cols-4 gap-4 xs:flex xs:flex-col sm:items-center sm:grid text-base">
             <div className="flex gap-4 items-center">

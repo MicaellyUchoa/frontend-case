@@ -1,13 +1,9 @@
 import { useState, useEffect } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 import useDebounce from '../../hooks/useDebounce';
+import { ISearchProps } from '../../interfaces/ISearchProps';
 
-interface SearchProps {
-    value: string | undefined;
-    onChange: React.Dispatch<React.SetStateAction<string | undefined>>;
-}
-
-function Search({ value = '', onChange }: SearchProps) {
+function Search({ value = '', onChange }: ISearchProps) {
     const [searchDebounce, setSearchDebounce] = useState<string | undefined>(value);
     const debouncedSearch = useDebounce(searchDebounce, 500);
 

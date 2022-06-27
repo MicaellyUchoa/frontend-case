@@ -1,13 +1,9 @@
 import { EntryEnum } from '../enums/EntryEnum';
 import { SourceEnum } from '../enums/SourceEnum';
 import { StatusEnum } from '../enums/StatusEnum';
+import { IUseStatusControlProps } from '../interfaces/IUseStatusControlProps';
 
-interface useStatusControlProps {
-    status: StatusEnum;
-    source: SourceEnum;
-    entry: EntryEnum;
-}
-function useStatusControl({ status, source, entry }: useStatusControlProps): string {
+function useStatusControl({ status, source, entry }: IUseStatusControlProps): string {
     switch (status) {
         case StatusEnum.COMPLETED: {
             if (source === SourceEnum.PAYMENT && entry === EntryEnum.DEBIT) {

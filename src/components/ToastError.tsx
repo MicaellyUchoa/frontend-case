@@ -1,10 +1,7 @@
 import { toast } from 'react-toastify';
+import { IToastErrorProps } from '../interfaces/IToastErrorProps';
 
-interface ToastErrorProps {
-    title: string;
-}
-
-function ToastError({ title }: ToastErrorProps) {
+function ToastError({ title }: IToastErrorProps) {
     return toast.error(title, {
         position: 'top-right',
         autoClose: 1000,

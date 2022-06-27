@@ -1,11 +1,8 @@
 import { useAuth } from '../data-access/auth/AuthContext';
 import { TbLogout } from 'react-icons/tb';
+import { IHeaderProps } from '../interfaces/IHeaderProps';
 
-interface HeaderProps {
-    title: string;
-}
-
-function Header({ title }: HeaderProps) {
+function Header({ title }: IHeaderProps) {
     const { MakeLogout } = useAuth();
 
     return (
