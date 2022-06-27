@@ -13,6 +13,7 @@ import Tab from '../components/Tab';
 
 import useExtractFiltered from '../hooks/useExtractFiltered';
 import { FilterEnum } from '../enums/FilterEnum';
+import Reload from '../components/Reload';
 
 function Home() {
     const RenderRef = useRef(true);
@@ -20,6 +21,7 @@ function Home() {
     const [extractList, setExtractList] = useState<IExtract[]>([]);
     const [filteredExtractList, setFilteredExtractList] = useState<IExtract[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
+    const [reload, setReload] = useState<boolean>(false);
     const [search, setSearch] = useState<string>();
     const [statusItems, setStatusItems] = useState<ITab[]>([
         { description: FilterEnum.ALL, selected: false },
@@ -29,10 +31,11 @@ function Home() {
     ]);
 
     useEffect(() => {
-        setLoading(true);
         setFilteredExtractList([]);
-        if (RenderRef.current || search !== undefined) {
+        if (RenderRef.current || search !== undefined || reload) {
             RenderRef.current = false;
+            setReload(false);
+            setLoading(true);
 
             const controller = new AbortController();
 
@@ -48,12 +51,13 @@ function Home() {
                     }
                 })
                 .finally(() => {
+                    setLoading(false);
                     controller.abort();
                 });
 
             return;
         }
-    }, [search]);
+    }, [search, reload]);
 
     useEffect(() => {
         useExtractFiltered({ statusItems, extractList, setFilteredExtractList });
@@ -67,8 +71,10 @@ function Home() {
             </div>
             {loading ? (
                 <Loading />
-            ) : (
+            ) : filteredExtractList.length > 0 || extractList.length > 0 ? (
                 <ExtractList list={filteredExtractList.length > 0 ? filteredExtractList : extractList} />
+            ) : (
+                <Reload setReload={setReload} />
             )}
         </>
     );
