@@ -2,9 +2,16 @@ import { render, fireEvent, createEvent } from '@testing-library/react';
 
 import Search from './Search';
 
+let props: any;
+beforeEach(() => {
+    props = {
+        value: 'search',
+        onChange: () => {},
+    };
+});
 describe('Search Component', () => {
     const setup = () => {
-        const utils = render(<Search value="search" onChange={() => {}} />);
+        const utils = render(<Search {...props} />);
         const input = utils.getByLabelText('inputSearch');
         return {
             input,
@@ -12,12 +19,12 @@ describe('Search Component', () => {
         };
     };
     test('should render placeholder on input', async () => {
-        const { getByPlaceholderText } = render(<Search value="search" onChange={() => {}} />);
+        const { getByPlaceholderText } = render(<Search {...props} />);
         expect(getByPlaceholderText('Pesquisar')).toBeTruthy();
     });
 
     test('should render value on input', async () => {
-        const { getByPlaceholderText } = render(<Search value="search" onChange={() => {}} />);
+        const { getByPlaceholderText } = render(<Search {...props} />);
         expect(getByPlaceholderText('Pesquisar')).toHaveAttribute('value', 'search');
     });
 
