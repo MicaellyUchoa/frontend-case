@@ -1,20 +1,23 @@
 import { useEffect, useRef, useState } from 'react';
 
-import { IExtract } from '../interfaces/IExtract';
 import api from '../api';
-import Header from '../components/Header';
+
+import { IExtract } from '../interfaces/IExtract';
+import { ITab } from '../interfaces/ITab';
+
 import ToastError from '../components/ToastError';
-import TabItem from '../components/TabItem';
 import Search from '../components/Search';
 import ExtractList from '../components/ExtractList';
 import Loading from '../components/Loading';
 import Tab from '../components/Tab';
-import { ITab } from '../interfaces/ITab';
+
+import useExtractFiltered from '../hooks/useExtractFiltered';
 
 function Home() {
     const RenderRef = useRef(true);
 
     const [extractList, setExtractList] = useState<IExtract[]>([]);
+    const [filteredExtractList, setFilteredExtractList] = useState<IExtract[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [search, setSearch] = useState<string>();
     const [statusItems, setStatusItems] = useState<ITab[]>([
@@ -26,6 +29,7 @@ function Home() {
 
     useEffect(() => {
         setLoading(true);
+        setFilteredExtractList([]);
         if (RenderRef.current || search !== undefined) {
             RenderRef.current = false;
 
@@ -50,13 +54,21 @@ function Home() {
         }
     }, [search]);
 
+    useEffect(() => {
+        useExtractFiltered({ statusItems, extractList, setFilteredExtractList });
+    }, [statusItems]);
+
     return (
         <div className="w-full flex-wrap px-8 md:px-36 py-5 ">
             <div className="flex xs:flex-wrap-reverse lg:flex-nowrap items-center">
                 <Tab items={statusItems} onChangeItems={setStatusItems} />
                 <Search value={search} onChange={setSearch} />
             </div>
-            {loading ? <Loading /> : <ExtractList list={extractList} />}
+            {loading ? (
+                <Loading />
+            ) : (
+                <ExtractList list={filteredExtractList.length > 0 ? filteredExtractList : extractList} />
+            )}
         </div>
     );
 }
