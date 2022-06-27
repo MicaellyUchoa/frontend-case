@@ -1,5 +1,5 @@
-import { IContainerPageProps } from '../interfaces/IContainerPageProps';
-import Header from './Header';
+import { IContainerPageProps } from '../../interfaces/IContainerPageProps';
+import Header from '../Header';
 
 function ContainerPage({ children, title }: IContainerPageProps) {
     return (
