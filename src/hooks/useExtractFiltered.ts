@@ -55,7 +55,7 @@ function useExtractFiltered({ statusItems, search, extractList, setFilteredExtra
                 });
             }
         });
-    setFilteredExtractList(provisionalExtract);
+    provisionalExtract && setFilteredExtractList(provisionalExtract);
 }
 
 export default useExtractFiltered;

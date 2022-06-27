@@ -64,6 +64,14 @@ function Home() {
         useExtractFiltered({ statusItems, extractList, setFilteredExtractList });
     }, [statusItems]);
 
+    const isExtractListShow = (): boolean => {
+        return (
+            (extractList.length > 0 && search === '') ||
+            (filteredExtractList.length > 0 && search !== '') ||
+            filteredExtractList.length > 0
+        );
+    };
+
     return (
         <>
             <div className="flex xs:flex-wrap-reverse lg:flex-nowrap items-center">
@@ -72,7 +80,7 @@ function Home() {
             </div>
             {loading ? (
                 <Loading />
-            ) : filteredExtractList.length > 0 || extractList.length > 0 ? (
+            ) : isExtractListShow() ? (
                 <ExtractList list={filteredExtractList.length > 0 ? filteredExtractList : extractList} />
             ) : (
                 <Reload setReload={setReload} />
