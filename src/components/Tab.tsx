@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import { FilterEnum } from '../enums/FilterEnum';
 import { ITab } from '../interfaces/ITab';
 import TabItem from './TabItem';
 
@@ -10,7 +11,21 @@ interface TabProps {
 function Tab({ items, onChangeItems }: TabProps) {
     const handleChangeStatus = (tabItem: ITab, index: number) => {
         let newItems = [...items];
+        if (tabItem.description === FilterEnum.ALL && !tabItem.selected) {
+            newItems = newItems.map(item => {
+                let provisionalItem = { ...item, selected: false };
+                return provisionalItem;
+            });
+        } else {
+            const getIndex = newItems.findIndex(item => {
+                return item.description === FilterEnum.ALL && item.selected;
+            });
+
+            newItems[getIndex] = { description: FilterEnum.ALL, selected: false };
+        }
+
         newItems[index] = { description: tabItem.description, selected: !tabItem.selected };
+
         onChangeItems(newItems);
     };
 

@@ -1,4 +1,5 @@
 import { EntryEnum } from '../enums/EntryEnum';
+import { FilterEnum } from '../enums/FilterEnum';
 import { IExtract, IExtractItem } from '../interfaces/IExtract';
 import { ITab } from '../interfaces/ITab';
 
@@ -13,12 +14,14 @@ function useExtractFiltered({ statusItems, extractList, setFilteredExtractList }
 
     const useFilterCondition = (filter: string, item: IExtractItem) => {
         switch (filter) {
-            case 'Futuro':
+            case FilterEnum.FUTURE:
                 return item.scheduled;
-            case 'Entrada':
+            case FilterEnum.ENTRY:
                 return item.entry === EntryEnum.CREDIT;
-            case 'Saída':
+            case FilterEnum.EXIT:
                 return item.entry === EntryEnum.DEBIT;
+            default:
+                return item;
         }
     };
 

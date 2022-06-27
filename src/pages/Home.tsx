@@ -12,6 +12,7 @@ import Loading from '../components/Loading';
 import Tab from '../components/Tab';
 
 import useExtractFiltered from '../hooks/useExtractFiltered';
+import { FilterEnum } from '../enums/FilterEnum';
 
 function Home() {
     const RenderRef = useRef(true);
@@ -21,10 +22,10 @@ function Home() {
     const [loading, setLoading] = useState<boolean>(true);
     const [search, setSearch] = useState<string>();
     const [statusItems, setStatusItems] = useState<ITab[]>([
-        { description: 'Tudo', selected: false },
-        { description: 'Entrada', selected: false },
-        { description: 'Saída', selected: false },
-        { description: 'Futuro', selected: false },
+        { description: FilterEnum.ALL, selected: false },
+        { description: FilterEnum.ENTRY, selected: false },
+        { description: FilterEnum.EXIT, selected: false },
+        { description: FilterEnum.FUTURE, selected: false },
     ]);
 
     useEffect(() => {
