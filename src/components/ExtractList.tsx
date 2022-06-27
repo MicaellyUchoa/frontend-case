@@ -26,12 +26,13 @@ function ExtractList({ list }: ExtractListProps) {
                         <div className="border-c_grayscale_100 border rounded-2xl px-4 py-7 flex flex-col gap-7">
                             {extract.items.map((item, indexItem) => (
                                 <div
+                                    key={indexItem}
                                     className={`${
                                         extract.items.length - 1 !== indexItem &&
                                         'xs:border-b-2 sm:border-none xs:border-c_grayscale_light xs:pb-4 sm:pb-0'
                                     }`}
                                 >
-                                    <ExtractItem item={item} key={indexItem} />
+                                    <ExtractItem item={item} />
                                 </div>
                             ))}
                         </div>
