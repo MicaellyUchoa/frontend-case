@@ -1,4 +1,4 @@
-import { render, RenderResult, waitFor } from '@testing-library/react';
+import { render, RenderResult } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { IHeaderProps } from '../../interfaces/IHeaderProps';
@@ -11,7 +11,6 @@ beforeEach(() => {
     props = {
         title: 'Extrato',
     };
-    jest.mock('../../data-access/auth/AuthContext', () => () => {});
 
     component = render(<Header {...props} />);
 });
