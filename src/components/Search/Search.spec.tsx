@@ -1,8 +1,9 @@
 import { render, fireEvent } from '@testing-library/react';
 
 import Search from '.';
+import { ISearchProps } from '../../interfaces/ISearchProps';
 
-let props: any;
+let props: ISearchProps;
 beforeEach(() => {
     props = {
         value: 'search',
