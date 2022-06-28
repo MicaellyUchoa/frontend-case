@@ -1,19 +1,19 @@
 import { useEffect, useRef, useState } from 'react';
 
-import api from '../api';
+import api from '../../api';
 
-import { IExtract } from '../interfaces/IExtract';
-import { ITab } from '../interfaces/ITab';
+import { IExtract } from '../../interfaces/IExtract';
+import { ITab } from '../../interfaces/ITab';
 
-import ToastError from '../components/ToastError';
-import Search from '../components/Search';
-import ExtractList from '../components/ExtractList';
-import Loading from '../components/Loading';
-import Tab from '../components/Tab';
+import ToastError from '../../components/ToastError';
+import Search from '../../components/Search';
+import ExtractList from '../../components/ExtractList';
+import Loading from '../../components/Loading';
+import Tab from '../../components/Tab';
 
-import useExtractFiltered from '../hooks/useExtractFiltered';
-import { FilterEnum } from '../enums/FilterEnum';
-import Reload from '../components/Reload';
+import useExtractFiltered from '../../hooks/useExtractFiltered';
+import { FilterEnum } from '../../enums/FilterEnum';
+import Reload from '../../components/Reload';
 
 function Home() {
     const RenderRef = useRef(true);

@@ -10,7 +10,7 @@ import { act } from 'react-dom/test-utils';
 
 describe('useExtractFiltered Hook', () => {
     let mockUser = {
-        user: 'usuario@usuario.com',
+        user: 'user@user.com',
         password: 'password',
     };
 
@@ -20,7 +20,7 @@ describe('useExtractFiltered Hook', () => {
     beforeEach(() => {
         contextValues = {
             signed: false,
-            user: { user: 'usuario1@usuario.com', password: 'password' },
+            user: { user: 'user1@user.com', password: 'password' },
             MakeLogin: (user: IUser) => Promise.resolve(),
             MakeLogout: () => Promise.resolve(),
         };

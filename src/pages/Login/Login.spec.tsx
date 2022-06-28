@@ -6,8 +6,8 @@ let component: RenderResult<typeof import('@testing-library/dom/types/queries'),
 import { Login } from './index';
 
 let mockUser = {
-    user: 'usuario@usuario.com',
-    password: 'usuario',
+    user: 'user@user.com',
+    password: 'user',
 };
 
 beforeEach(() => {

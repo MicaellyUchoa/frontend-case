@@ -1,4 +1,4 @@
-import { renderHook, screen } from '@testing-library/react';
+import { renderHook } from '@testing-library/react';
 import { IUseExtractFilteredProps } from '../../interfaces/IUseExtractFilteredProps';
 import { StatusEnum } from '../../enums/StatusEnum';
 import { SourceEnum } from '../../enums/SourceEnum';

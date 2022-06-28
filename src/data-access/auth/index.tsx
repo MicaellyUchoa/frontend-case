@@ -58,7 +58,6 @@ export const AuthProvider = (props: { children: JSX.Element }) => {
     );
 };
 
-//TODO test here
 export function useAuth() {
     const context = useContext(AuthContext);
 

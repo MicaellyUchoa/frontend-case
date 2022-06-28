@@ -2,7 +2,6 @@ import { IExtract } from '../../interfaces/IExtract';
 import { IUseExtractFilteredProps } from '../../interfaces/IUseExtractFilteredProps';
 import { useFilterCondition } from '../useFilterCondition';
 
-//TODO test here
 function useExtractFiltered({
     statusItems,
     search,

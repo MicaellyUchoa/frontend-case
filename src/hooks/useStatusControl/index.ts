@@ -3,7 +3,6 @@ import { SourceEnum } from '../../enums/SourceEnum';
 import { StatusEnum } from '../../enums/StatusEnum';
 import { IUseStatusControlProps } from '../../interfaces/IUseStatusControlProps';
 
-//TODO test here
 function useStatusControl({ status, source, entry }: IUseStatusControlProps): string {
     switch (status) {
         case StatusEnum.COMPLETED: {
@@ -21,10 +20,10 @@ function useStatusControl({ status, source, entry }: IUseStatusControlProps): st
             }
         }
         case StatusEnum.REFUNDED: {
-            if (source === SourceEnum.PAYMENT && entry === EntryEnum.CREDIT) {
-                return 'Pagamento Estornado';
-            }
-            if (source === SourceEnum.TRANSFER && entry === EntryEnum.CREDIT) {
+            if (
+                (source === SourceEnum.PAYMENT && entry === EntryEnum.CREDIT) ||
+                (source === SourceEnum.TRANSFER && entry === EntryEnum.CREDIT)
+            ) {
                 return 'Pagamento Estornado';
             }
         }
