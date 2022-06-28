@@ -23,7 +23,7 @@ export const AuthProvider = (props: { children: JSX.Element }) => {
     async function MakeLogin(userData: IUser) {
         api.get(`/users`, { params: userData.user })
             .then(response => {
-                if (response?.data[0]?.password !== userData.password) {
+                if (response?.data[0]?.password !== userData.password || response?.data[0]?.user !== userData.user) {
                     return ToastError({ title: 'Usuário e/ou senha inválidos, tente novamente mais tarde!' });
                 }
                 setUser({ user: userData.user, token: 'token' });
