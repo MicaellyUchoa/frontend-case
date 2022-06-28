@@ -8,10 +8,10 @@ function Reload({ setReload }: IReloadProps) {
             </p>
             <button
                 data-testid="reload"
-                className="bg-c_primary text-white p-4 rounded-xl"
+                className="bg-c_primary text-white p-4 rounded-xl outline-none focus:border focus:border-c_secondary"
                 onClick={() => setReload(true)}
             >
-                Regarregar
+                Recarregar
             </button>
         </div>
     );
