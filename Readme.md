@@ -5,43 +5,43 @@ Desenvolvimento de um case para CoraBank.
 ## 🔧 Instalação
 
 ```bash
-$ yarn install
+yarn install
 ```
 
 #### Para rodar o JSON-SERVER
 
 ```bash
-$ yarn api
+yarn api
 ```
 
 #### Para rodar o projeto em desenvolvimento
 
 ```bash
-$ yarn dev
+yarn dev
 ```
 
 #### Para rodar os testes unitários com coverage
 
 ```bash
-$ yarn test
+yarn test
 ```
 
 #### Para gerar o build do projeto
 
 ```bash
-$ yarn build
+yarn build
 ```
 
 #### Para rodar o lint
 
 ```bash
-$ yarn lint
+yarn lint
 ```
 
 #### Para rodar o prettier
 
 ```bash
-$ yarn format
+yarn format
 ```
 
 #### 💻 Tecnologias utilizadas
