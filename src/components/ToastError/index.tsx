@@ -1,5 +1,5 @@
 import { toast } from 'react-toastify';
-import { IToastErrorProps } from '../interfaces/IToastErrorProps';
+import { IToastErrorProps } from '../../interfaces/IToastErrorProps';
 
 function ToastError({ title }: IToastErrorProps) {
     return toast.error(title, {
