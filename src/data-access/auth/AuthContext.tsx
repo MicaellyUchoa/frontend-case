@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect, useContext } from 'react';
-import { BrowserRouter, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import api from '../../api';
 import ToastError from '../../components/ToastError';
 import { IAuthContextData } from '../../interfaces/IAuthContextData';
@@ -9,6 +9,7 @@ const AuthContext = createContext<IAuthContextData>({} as IAuthContextData);
 
 export const AuthProvider = (props: { children: JSX.Element }) => {
     const navigate = useNavigate();
+
     const [user, setUser] = useState<{ user: string; token: string } | null>(null);
 
     useEffect(() => {
@@ -19,7 +20,7 @@ export const AuthProvider = (props: { children: JSX.Element }) => {
         }
     }, []);
 
-    function MakeLogin(userData: IUser) {
+    async function MakeLogin(userData: IUser) {
         api.get(`/users`, { params: userData.user })
             .then(response => {
                 if (response?.data[0]?.password !== userData.password) {
@@ -34,7 +35,6 @@ export const AuthProvider = (props: { children: JSX.Element }) => {
                 if (error) {
                     return ToastError({ title: 'Algo deu errado, tente novamente mais tarde!' });
                 }
-                return;
             });
     }
 
@@ -45,18 +45,16 @@ export const AuthProvider = (props: { children: JSX.Element }) => {
     }
 
     return (
-        <BrowserRouter>
-            <AuthContext.Provider
-                value={{
-                    signed: Boolean(user),
-                    user,
-                    MakeLogin,
-                    MakeLogout,
-                }}
-            >
-                {props.children}
-            </AuthContext.Provider>
-        </BrowserRouter>
+        <AuthContext.Provider
+            value={{
+                signed: Boolean(user),
+                user,
+                MakeLogin,
+                MakeLogout,
+            }}
+        >
+            {props.children}
+        </AuthContext.Provider>
     );
 };
 

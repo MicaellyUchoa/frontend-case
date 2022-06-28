@@ -1,18 +1,10 @@
-import { useAuth } from '../../data-access/auth/AuthContext';
 import LogoCora from '../../assets/images/logo.png';
 import { Formik } from 'formik';
 import * as yup from 'yup';
-import { IUser } from '../../interfaces/IUser';
+import { useAuth } from '../../data-access/auth/AuthContext';
 
 export function Login() {
     const { MakeLogin } = useAuth();
-
-    const handleSubmit = (values: IUser) => {
-        MakeLogin({
-            user: values.user,
-            password: values.password,
-        });
-    };
 
     return (
         <div className="w-full h-screen bg-c_grayscale_100 flex flex-col justify-center items-center">
@@ -21,14 +13,13 @@ export function Login() {
             </div>
 
             <Formik
+                data-testid="formik"
                 initialValues={{ user: '', password: '' }}
                 validationSchema={yup.object().shape({
                     user: yup.string().required('Este campo é obrigatório'),
                     password: yup.string().required('Este campo é obrigatório'),
                 })}
-                onSubmit={values => {
-                    handleSubmit(values);
-                }}
+                onSubmit={values => MakeLogin(values)}
             >
                 {({ values, handleChange, handleBlur, handleSubmit, errors, touched }) => (
                     <form onSubmit={handleSubmit}>

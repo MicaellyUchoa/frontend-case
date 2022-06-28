@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import RouteConfig from './routes';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 //context api
 import { AuthProvider } from './data-access/auth/AuthContext';
@@ -15,8 +16,10 @@ import './styles/index.css';
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
         <ToastContainer />
-        <AuthProvider>
-            <RouteConfig />
-        </AuthProvider>
+        <Router>
+            <AuthProvider>
+                <RouteConfig />
+            </AuthProvider>
+        </Router>
     </React.StrictMode>,
 );
