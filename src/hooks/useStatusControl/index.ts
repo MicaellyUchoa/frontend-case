@@ -1,8 +1,9 @@
-import { EntryEnum } from '../enums/EntryEnum';
-import { SourceEnum } from '../enums/SourceEnum';
-import { StatusEnum } from '../enums/StatusEnum';
-import { IUseStatusControlProps } from '../interfaces/IUseStatusControlProps';
+import { EntryEnum } from '../../enums/EntryEnum';
+import { SourceEnum } from '../../enums/SourceEnum';
+import { StatusEnum } from '../../enums/StatusEnum';
+import { IUseStatusControlProps } from '../../interfaces/IUseStatusControlProps';
 
+//TODO test here
 function useStatusControl({ status, source, entry }: IUseStatusControlProps): string {
     switch (status) {
         case StatusEnum.COMPLETED: {
