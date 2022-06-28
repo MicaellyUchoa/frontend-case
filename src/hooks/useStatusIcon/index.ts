@@ -1,10 +1,11 @@
-import { StatusEnum } from '../enums/StatusEnum';
+import { StatusEnum } from '../../enums/StatusEnum';
 
 //icons
-import Received from '../assets/icons/received.svg';
-import Refunded from '../assets/icons/refunded.svg';
-import Schedule from '../assets/icons/schedule.svg';
-import { IUseStatusIconProps } from '../interfaces/IUseStatusIconProps';
+import Received from '../../assets/icons/received.svg';
+import Refunded from '../../assets/icons/refunded.svg';
+import Schedule from '../../assets/icons/schedule.svg';
+
+import { IUseStatusIconProps } from '../../interfaces/IUseStatusIconProps';
 
 function useStatusIcon({ status }: IUseStatusIconProps): string {
     switch (status) {
@@ -17,8 +18,6 @@ function useStatusIcon({ status }: IUseStatusIconProps): string {
         case StatusEnum.PENDING: {
             return Schedule;
         }
-        default:
-            return Schedule;
     }
 }
 
