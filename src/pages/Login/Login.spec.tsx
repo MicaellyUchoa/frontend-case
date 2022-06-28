@@ -5,8 +5,6 @@ let component: RenderResult<typeof import('@testing-library/dom/types/queries'),
 
 import { Login } from './index';
 
-const mockSubmit = jest.fn();
-
 let mockUser = {
     user: 'usuario@usuario.com',
     password: 'usuario',
