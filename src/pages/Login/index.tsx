@@ -31,7 +31,7 @@ export function Login() {
                                 <label className="text-gray-500">usuário:</label>
                                 <input
                                     data-testid="user"
-                                    className="w-full h-12 bg-gray-100 rounded-md focus:border focus:border-c_primary outline-none p-2"
+                                    className="w-full h-12 bg-gray-100 rounded-md  outline-none p-2"
                                     onChange={handleChange}
                                     onBlur={handleBlur}
                                     name="user"
@@ -46,7 +46,7 @@ export function Login() {
                                 <div className="w-full h-12 flex items-center bg-gray-100 pl-1 rounded-md  outline-none">
                                     <input
                                         data-testid="password"
-                                        className="w-full h-auto rounded-md bg-gray-100 focus:border focus:border-c_primary outline-none autofill:bg-gray-100 p-2"
+                                        className="w-full h-auto rounded-md bg-gray-100  outline-none autofill:bg-gray-100 p-2"
                                         onChange={handleChange}
                                         onBlur={handleBlur}
                                         name="password"
@@ -55,7 +55,7 @@ export function Login() {
                                     />
                                     <button
                                         type="button"
-                                        className="focus:border focus:border-c_primary outline-none bg-gray-100 p-3 h-auto rounded-md "
+                                        className=" outline-none bg-gray-100 p-3 h-auto rounded-md "
                                         onClick={() => setShowPassword(prevState => !prevState)}
                                     >
                                         {showPassword ? (
