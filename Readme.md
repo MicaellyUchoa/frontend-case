@@ -86,4 +86,10 @@ $ yarn format
 -   Reload
 -   Exibição de mensagem quando nada for encontrado na listagem
 
+#### Dados para o login
+
+👤 usuário: `user@user.com`
+
+🔑 senha: `user`
+
 [✨ Clique aqui para ver como ficou ✨](https://frontend-case-seven.vercel.app/)
