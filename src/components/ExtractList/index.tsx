@@ -23,10 +23,7 @@ function ExtractList({ list }: IExtractListProps) {
                             {extract.items.map((item, indexItem) => (
                                 <div
                                     key={indexItem}
-                                    className={`${
-                                        extract.items.length - 1 !== indexItem &&
-                                        'xs:border-b-2 sm:border-none xs:border-c_grayscale_light xs:pb-4 sm:pb-0'
-                                    }`}
+                                    className="last:border-none xs:border-b-2 sm:border-none xs:border-c_grayscale_light xs:pb-4 sm:pb-0"
                                 >
                                     <ExtractItem item={item} />
                                 </div>
