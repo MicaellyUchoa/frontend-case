@@ -1,7 +1,7 @@
-import ExtractItem from './ExtractItem';
-import formatDate from '../utils/formatDate';
-import formatMoney from '../utils/formatMoney';
-import { IExtractListProps } from '../interfaces/IExtractListProps';
+import ExtractItem from '../ExtractItem';
+import formatDate from '../../utils/formatDate';
+import formatMoney from '../../utils/formatMoney';
+import { IExtractListProps } from '../../interfaces/IExtractListProps';
 
 function ExtractList({ list }: IExtractListProps) {
     return (
