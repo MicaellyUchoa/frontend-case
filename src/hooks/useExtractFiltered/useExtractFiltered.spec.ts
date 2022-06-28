@@ -1,5 +1,4 @@
 import { renderHook, screen } from '@testing-library/react';
-import useDebounce from './index';
 import { IUseExtractFilteredProps } from '../../interfaces/IUseExtractFilteredProps';
 import { StatusEnum } from '../../enums/StatusEnum';
 import { SourceEnum } from '../../enums/SourceEnum';
