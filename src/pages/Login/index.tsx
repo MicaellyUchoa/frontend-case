@@ -2,9 +2,12 @@ import LogoCora from '../../assets/images/logo.png';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { useAuth } from '../../data-access/auth';
+import { useState } from 'react';
+import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 
 export function Login() {
     const { MakeLogin } = useAuth();
+    const [showPassword, setShowPassword] = useState(false);
 
     return (
         <div className="w-full h-screen bg-c_grayscale_100 flex flex-col justify-center items-center">
@@ -28,7 +31,7 @@ export function Login() {
                                 <label className="text-gray-500">usuário:</label>
                                 <input
                                     data-testid="user"
-                                    className="w-full h-10 border-gray-100 rounded-md focus:outline-none p-2"
+                                    className="w-full h-12 bg-gray-100 rounded-md focus:border focus:border-c_primary outline-none p-2"
                                     onChange={handleChange}
                                     onBlur={handleBlur}
                                     name="user"
@@ -40,15 +43,28 @@ export function Login() {
                             </div>
                             <div className="mb-4">
                                 <label className="text-gray-500">senha:</label>
-                                <input
-                                    data-testid="password"
-                                    className="w-full h-10 border-gray-100 rounded-md focus:outline-none p-2"
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    name="password"
-                                    type="password"
-                                    value={values.password}
-                                />
+                                <div className="w-full h-12 flex items-center bg-gray-100 pl-1 rounded-md  outline-none">
+                                    <input
+                                        data-testid="password"
+                                        className="w-full h-auto rounded-md bg-gray-100 focus:border focus:border-c_primary outline-none autofill:bg-gray-100 p-2"
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        name="password"
+                                        type={showPassword ? 'text' : 'password'}
+                                        value={values.password}
+                                    />
+                                    <button
+                                        type="button"
+                                        className="focus:border focus:border-c_primary outline-none bg-gray-100 p-3 h-auto rounded-md "
+                                        onClick={() => setShowPassword(prevState => !prevState)}
+                                    >
+                                        {showPassword ? (
+                                            <AiFillEye className="text-c_grayscale" size={20} />
+                                        ) : (
+                                            <AiFillEyeInvisible className="text-c_grayscale" size={20} />
+                                        )}
+                                    </button>
+                                </div>
                                 {errors.password && touched.password && (
                                     <p className="text-red-900 text-xs mt-1">{errors.password}</p>
                                 )}
@@ -56,7 +72,7 @@ export function Login() {
 
                             <button
                                 type="submit"
-                                className="bg-c_primary hover:bg-pink-700 focus:bg-c_primary text-gray-200 hover:text-gray-200 transition-colors w-full rounded-lg h-10 focus:outline-none "
+                                className="bg-c_primary hover:bg-pink-700 focus:bg-pink-700 text-gray-200 hover:text-gray-200 transition-colors w-full rounded-lg h-10 focus:outline-none "
                             >
                                 Entrar
                             </button>
