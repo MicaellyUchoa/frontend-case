@@ -102,7 +102,7 @@ describe('useStatusControl Hook', () => {
                 }),
             );
 
-            expect(result.current).toEqual('Pagamento Agendado');
+            expect(result.current).toEqual('Transferência Agendada');
         });
     });
 
