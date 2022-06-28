@@ -1,19 +1,17 @@
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../data-access/auth/AuthContext';
-import LogoCora from '../assets/images/logo.png';
+import { useAuth } from '../../data-access/auth/AuthContext';
+import LogoCora from '../../assets/images/logo.png';
 import { Formik } from 'formik';
 import * as yup from 'yup';
+import { IUser } from '../../interfaces/IUser';
 
 export function Login() {
-    const navigate = useNavigate();
-    const { MakeLogin, signed } = useAuth();
+    const { MakeLogin } = useAuth();
 
-    const handleLogin = async (values: { user: string; password: string }) => {
-        await MakeLogin({
+    const handleSubmit = (values: IUser) => {
+        MakeLogin({
             user: values.user,
             password: values.password,
         });
-        signed && navigate('/home');
     };
 
     return (
@@ -29,7 +27,7 @@ export function Login() {
                     password: yup.string().required('Este campo é obrigatório'),
                 })}
                 onSubmit={values => {
-                    handleLogin(values);
+                    handleSubmit(values);
                 }}
             >
                 {({ values, handleChange, handleBlur, handleSubmit, errors, touched }) => (
@@ -38,6 +36,7 @@ export function Login() {
                             <div className="mb-4">
                                 <label className="text-gray-500">usuário:</label>
                                 <input
+                                    data-testid="user"
                                     className="w-full h-10 border-gray-100 rounded-md focus:outline-none p-2"
                                     onChange={handleChange}
                                     onBlur={handleBlur}
@@ -51,6 +50,7 @@ export function Login() {
                             <div className="mb-4">
                                 <label className="text-gray-500">senha:</label>
                                 <input
+                                    data-testid="password"
                                     className="w-full h-10 border-gray-100 rounded-md focus:outline-none p-2"
                                     onChange={handleChange}
                                     onBlur={handleBlur}

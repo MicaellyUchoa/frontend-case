@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect, useContext } from 'react';
+import { BrowserRouter, useNavigate } from 'react-router-dom';
 import api from '../../api';
 import ToastError from '../../components/ToastError';
 import { IAuthContextData } from '../../interfaces/IAuthContextData';
@@ -7,6 +8,7 @@ import { IUser } from '../../interfaces/IUser';
 const AuthContext = createContext<IAuthContextData>({} as IAuthContextData);
 
 export const AuthProvider = (props: { children: JSX.Element }) => {
+    const navigate = useNavigate();
     const [user, setUser] = useState<{ user: string; token: string } | null>(null);
 
     useEffect(() => {
@@ -17,7 +19,7 @@ export const AuthProvider = (props: { children: JSX.Element }) => {
         }
     }, []);
 
-    async function MakeLogin(userData: IUser): Promise<void> {
+    function MakeLogin(userData: IUser) {
         api.get(`/users`, { params: userData.user })
             .then(response => {
                 if (response?.data[0]?.password !== userData.password) {
@@ -26,6 +28,7 @@ export const AuthProvider = (props: { children: JSX.Element }) => {
                 setUser({ user: userData.user, token: 'token' });
                 localStorage.setItem('user', userData.user);
                 localStorage.setItem('token', 'Bearer jwtToken');
+                navigate('/home', { replace: true });
             })
             .catch(error => {
                 if (error) {
@@ -42,19 +45,22 @@ export const AuthProvider = (props: { children: JSX.Element }) => {
     }
 
     return (
-        <AuthContext.Provider
-            value={{
-                signed: Boolean(user),
-                user,
-                MakeLogin,
-                MakeLogout,
-            }}
-        >
-            {props.children}
-        </AuthContext.Provider>
+        <BrowserRouter>
+            <AuthContext.Provider
+                value={{
+                    signed: Boolean(user),
+                    user,
+                    MakeLogin,
+                    MakeLogout,
+                }}
+            >
+                {props.children}
+            </AuthContext.Provider>
+        </BrowserRouter>
     );
 };
 
+//TODO test here
 export function useAuth() {
     const context = useContext(AuthContext);
 

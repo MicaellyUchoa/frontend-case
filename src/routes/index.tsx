@@ -1,4 +1,4 @@
-import { Route, BrowserRouter, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Home from '../pages/Home';
 import { Login } from '../pages/Login';
 import { useAuth } from '../data-access/auth/AuthContext';
@@ -12,31 +12,29 @@ function RequireAuth(props: { children: JSX.Element }) {
 
 const RouteConfig = () => {
     return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/login" element={<Login />} />
-                <Route
-                    path="/home"
-                    element={
-                        <RequireAuth>
-                            <ContainerPage title="Extrato">
-                                <Home />
-                            </ContainerPage>
-                        </RequireAuth>
-                    }
-                />
-                <Route
-                    path="*"
-                    element={
-                        <RequireAuth>
-                            <ContainerPage title="Extrato">
-                                <Home />
-                            </ContainerPage>
-                        </RequireAuth>
-                    }
-                />
-            </Routes>
-        </BrowserRouter>
+        <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route
+                path="/home"
+                element={
+                    <RequireAuth>
+                        <ContainerPage title="Extrato">
+                            <Home />
+                        </ContainerPage>
+                    </RequireAuth>
+                }
+            />
+            <Route
+                path="*"
+                element={
+                    <RequireAuth>
+                        <ContainerPage title="Extrato">
+                            <Home />
+                        </ContainerPage>
+                    </RequireAuth>
+                }
+            />
+        </Routes>
     );
 };
 
