@@ -20,6 +20,12 @@ $ yarn api
 $ yarn dev
 ```
 
+#### Para rodar os testes unitários com coverage
+
+```bash
+$ yarn test
+```
+
 #### Para gerar o build do projeto
 
 ```bash
@@ -62,6 +68,8 @@ $ yarn format
 -   formik
 -   axios
 -   date-fns
+-   jest
+-   testing-library
 
 🚀 _Features_
 
