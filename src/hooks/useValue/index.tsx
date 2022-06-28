@@ -1,9 +1,10 @@
-import { EntryEnum } from '../enums/EntryEnum';
-import { StatusEnum } from '../enums/StatusEnum';
-import formatMoney from '../utils/formatMoney';
-import { IUseValueProps } from '../interfaces/IUseValueProps';
+import { EntryEnum } from '../../enums/EntryEnum';
+import { StatusEnum } from '../../enums/StatusEnum';
+import formatMoney from '../../utils/formatMoney';
+import { IUseValueProps } from '../../interfaces/IUseValueProps';
 
 function useValue({ status, entry, value }: IUseValueProps): JSX.Element {
+    //TODO test here
     const handleStyleValue = (): string => {
         if (status === StatusEnum.REFUNDED) return 'text-c_grayscale line-through';
         switch (entry) {
@@ -14,6 +15,7 @@ function useValue({ status, entry, value }: IUseValueProps): JSX.Element {
         }
     };
 
+    //TODO test here
     const renderSignal = (): string | undefined => {
         if (status === StatusEnum.REFUNDED) return;
         switch (entry) {

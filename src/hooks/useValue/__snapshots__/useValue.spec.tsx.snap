@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`useValue Hook should call with status (refunded) 1`] = `
+<p
+  className="text-c_grayscale line-through sm:text-end"
+>
+  <span
+    className="false"
+  >
+    R$ 90,00
+  </span>
+</p>
+`;
+
+exports[`useValue Hook useValue Hook (entry) should call with entry (credit) 1`] = `
+<p
+  className="text-c_secondary sm:text-end"
+>
+   + 
+  <span
+    className="font-black"
+  >
+    R$ 90,00
+  </span>
+</p>
+`;
+
+exports[`useValue Hook useValue Hook (entry) should call with entry (debit) 1`] = `
+<p
+  className="text-c_primary sm:text-end"
+>
+   - 
+  <span
+    className="font-black"
+  >
+    R$ 90,00
+  </span>
+</p>
+`;
