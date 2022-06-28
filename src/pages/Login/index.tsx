@@ -1,7 +1,7 @@
 import LogoCora from '../../assets/images/logo.png';
 import { Formik } from 'formik';
 import * as yup from 'yup';
-import { useAuth } from '../../data-access/auth/AuthContext';
+import { useAuth } from '../../data-access/auth';
 
 export function Login() {
     const { MakeLogin } = useAuth();

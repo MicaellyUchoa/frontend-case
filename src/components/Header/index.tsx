@@ -1,4 +1,4 @@
-import { useAuth } from '../../data-access/auth/AuthContext';
+import { useAuth } from '../../data-access/auth';
 import { TbLogout } from 'react-icons/tb';
 import { IHeaderProps } from '../../interfaces/IHeaderProps';
 

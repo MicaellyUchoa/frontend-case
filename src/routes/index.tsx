@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import Home from '../pages/Home';
 import { Login } from '../pages/Login';
-import { useAuth } from '../data-access/auth/AuthContext';
+import { useAuth } from '../data-access/auth';
 import ContainerPage from '../components/ContainerPage';
 
 function RequireAuth(props: { children: JSX.Element }) {

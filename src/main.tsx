@@ -4,7 +4,7 @@ import RouteConfig from './routes';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 //context api
-import { AuthProvider } from './data-access/auth/AuthContext';
+import { AuthProvider } from './data-access/auth';
 
 //toast
 import { ToastContainer } from 'react-toastify';
